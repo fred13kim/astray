@@ -15,34 +15,29 @@ set(CMAKE_CXX_COMPILER arm-none-eabi-g++)
 set(CMAKE_ASM_COMPILER arm-none-eabi-gcc)
 
 add_compile_options(
-    -mcpu=${CMAKE_SYSTEM_PROCESSOR}
-    -mthumb
-    -mfloat-abi=soft
-    -specs=nosys.specs
-    # Warnings
-    -Wall
-    -Wextra
-    -Wshadow
-    -Wundef
-    -Wdouble-promotion
-    -Wformat=2
-    -Wformat-truncation
-    -Wconversion
-    # Code Gen
-    -fno-common
-    # Optimization
-    -ffunction-sections
-    -fdata-sections
-    # Debug
-    -O0
-    -g3
-)
+  -mcpu=${CMAKE_SYSTEM_PROCESSOR}
+  -mthumb
+  -mfloat-abi=soft
+  -specs=nosys.specs
+  # Warnings
+  -Wall
+  -Wextra
+  -Wshadow
+  -Wundef
+  -Wdouble-promotion
+  -Wformat=2
+  -Wformat-truncation
+  -Wconversion
+  # Code Gen
+  -fno-common
+  # Optimization
+  -ffunction-sections
+  -fdata-sections
+  # Debug
+  -O0
+  -g3)
 
-add_link_options(
-    -T ${LINKER_SCRIPT}
-    -Wl,-Map=astray.map
-    -nostartfiles
-)
+add_link_options(-T ${LINKER_SCRIPT} -Wl,-Map=astray.map -nostartfiles)
 
 add_subdirectory(src)
 add_subdirectory(inc)

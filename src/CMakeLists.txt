@@ -1,10 +1,5 @@
 add_library(astray_kernel)
 
-target_sources(astray_kernel PRIVATE
-    task.c
-)
+target_sources(astray_kernel PRIVATE task.c)
 
-target_link_libraries(astray_kernel
-    PUBLIC
-    astray_kernel_include
-)
+target_link_libraries(astray_kernel PUBLIC astray_kernel_include)
