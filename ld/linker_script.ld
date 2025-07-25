@@ -16,19 +16,19 @@ SECTIONS {
 
     .text : {
         . = ALIGN(4);
-        *(.text*)
+        *(.text .text*)
         . = ALIGN(4);
     } > flash
 
     .data : {
         . = ALIGN(4);
-        *(.data*)
+        *(.data .data*)
         . = ALIGN(4);
     } > sram AT > flash
 
     .bss : {
         . = ALIGN(4);
-        *(.bss*)
+        *(.bss .bss*)
         . = ALIGN(4);
     } > sram
 }
