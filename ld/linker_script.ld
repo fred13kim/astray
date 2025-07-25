@@ -21,6 +21,14 @@ SECTIONS {
         . = ALIGN(4);
     } > flash
 
+    .rodata : {
+        . = ALIGN(4);
+        *(.rodata)
+        *(.rodata*)
+        . = ALIGN(4);
+    } > flash
+
+
     .data : {
         . = ALIGN(4);
         _sdata = .;
@@ -29,6 +37,14 @@ SECTIONS {
         . = ALIGN(4);
         _edata = .;
     } > sram AT > flash
+
+    /**
+     * VMA lives in flash and LMA lives in sram
+     * In this context we are LOADING the LMA address into sidata so we can copy
+     * the data such as global initialized variables from flash VMA into sram LMA
+     */
+
+    _sidata = LOADADDR(.data);
 
     .bss : {
         . = ALIGN(4);
