@@ -35,7 +35,9 @@ add_compile_options(
   -fdata-sections
   # Debug
   -O0
-  -g3)
+  -g3
+  # Optional
+  -fstack-usage)
 
 add_link_options(-T ${LINKER_SCRIPT} -Wl,-Map=astray.map -nostartfiles)
 
