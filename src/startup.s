@@ -23,7 +23,7 @@ Vectors:
     .word   _mstack
     .word   Reset_Handler
     .word   NMI_Handler
-    .word   Hard_Fault_Handler
+    .word   HardFault_Handler
 
     .word   0
     .word   0
