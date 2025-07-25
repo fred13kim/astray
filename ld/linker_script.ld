@@ -5,7 +5,7 @@ MEMORY {
     sram (rwx)  : ORIGIN = 0x20000000, LENGTH = 128K
 }
 
-_mstack = ORIGIN(flash) + LENGTH(sram);
+_mstack = ORIGIN(sram) + LENGTH(sram);
 
 SECTIONS {
     .isr_vector : {
