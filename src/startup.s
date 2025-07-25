@@ -76,6 +76,7 @@ LoopZeroBSS:
 /* ---------------------------------------- */
 
     .section    .isr_vector
+    .type       Vectors, %object
 
 /* Defined in B1.5.2 of ARMv7-M Ref */
 /*                                  ADDR    */
