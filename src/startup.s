@@ -33,40 +33,35 @@ Reset_Handler:
     ldr     sp, =_mstack /* LOAD main stack address into stack pointer */
     bl      SystemInit
 
-    /* Copy initialized data from VMA (flash) to LMA (sram) */
+    /* Copy initialized data from VMA data (flash) to LMA idata (sram) */
 
     ldr     r0, =_sdata
     ldr     r1, =_edata
     ldr     r2, =_sidata
 
-    movs    r3, #0
-    b       LoopCopyDataInit
+    b       CopyData
 
-CopyDataInit:
-    ldr     r4, [r2, r3]
-    str     r4, [r0, r3]
-    adds    r3, r3, #4
-
-LoopCopyDataInit:
-    adds    r4, r0, r3
-    cmp     r4, r1
-    bcc     CopyDataInit
-
-    /* Zero fill BSS region */
+CopyData:
+    cmp     r0, r1
+    itt     lo
+    ldrlo   r3, [r0], #4 /* Index src pointer */
+    strlo   r3, [r2], #4 /* Index dst pointer */
+    blo     CopyData
 
     ldr     r0, =_sbss
     ldr     r1, =_ebss
+    movs    r2, #0
 
-    movs    r3, #0
-    b       LoopZeroBSS
+    b       ZeroBss
 
-ZeroBSS:
-    str     r3, [r0]
-    adds    r0, r0, #4
+ZeroBss:
+    cmp     r0,r1
+    it      lo
+    strlo   r2, [r0], #4
+    blo     ZeroBss
 
-LoopZeroBSS:
-    cmp     r1, r0
-    bcc     ZeroBSS
+    bl main
+    bx lr
 
 
 
