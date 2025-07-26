@@ -20,3 +20,11 @@ clean:
 	@rm -rf $(BUILD_DIR)
 
 rebuild: clean build
+
+debug:
+	@echo "==> Running 'make debug' in $(BUILD_DIR)..."
+	@$(MAKE) -C $(BUILD_DIR) debug
+
+flash:
+	@echo "==> Running 'make flash' in $(BUILD_DIR)..."
+	@$(MAKE) -C $(BUILD_DIR) flash
