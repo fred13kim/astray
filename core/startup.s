@@ -10,23 +10,11 @@
 
 /* ---------------------------------------- */
 
-    .global     SysInit
     .global     Reset_Handler
     .global     Default_Handler
     .global     Vectors
 
-/* ---------------------------------------- */
-
-    .section    .text.SysInit
-    .type       SysInit, %function
-
-SysInit:
-    /* Not relocating vector table */
-    /* Not using fpu */
-    /* Not configuring system clock yet */
-    bx      lr
-
-.size   SysInit, .-SysInit
+    .extern     SysInit
 
 /* ---------------------------------------- */
 
@@ -34,8 +22,9 @@ SysInit:
     .type       Reset_Handler, %function
 
 Reset_Handler:
-    ldr     sp, =_mstack /* LOAD main stack address into stack pointer */
-    bl      SysInit
+    ldr     sp, =_mstack
+        /* LOAD main stack address into stack pointer */
+        /* This happens by default but just want to make sure */
 
     /* Copy initialized data from VMA data (flash) to LMA idata (sram) */
 
@@ -63,6 +52,8 @@ ZeroBss:
     it      lo
     strlo   r2, [r0], #4
     blo     ZeroBss
+
+    bl      SysInit
 
     bl      main
     bx      lr

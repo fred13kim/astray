@@ -43,6 +43,7 @@ add_compile_options(
 
 add_link_options(-T ${LINKER_SCRIPT} -Wl,-Map=astray.map -nostartfiles)
 
+add_subdirectory(core)
 add_subdirectory(src)
 add_subdirectory(inc)
 add_subdirectory(astrayos)
