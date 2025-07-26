@@ -13,6 +13,7 @@ set(CMAKE_SYSTEM_PROCESSOR cortex-m4)
 set(CMAKE_C_COMPILER arm-none-eabi-gcc)
 set(CMAKE_CXX_COMPILER arm-none-eabi-g++)
 set(CMAKE_ASM_COMPILER arm-none-eabi-gcc)
+set(CMAKE_OBJCOPY arm-none-eabi-objcopy)
 
 add_compile_options(
   -mcpu=${CMAKE_SYSTEM_PROCESSOR}
