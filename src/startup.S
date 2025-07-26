@@ -16,6 +16,7 @@
     .global     Vectors
 
 /* ---------------------------------------- */
+
     .section    .text.SysInit
     .type       SysInit, %function
 
@@ -69,6 +70,7 @@ ZeroBss:
 .size   Reset_Handler, .-Reset_Handler
 
 /* ---------------------------------------- */
+
     .section    .text.Default_Handler
 
 Default_Handler:
