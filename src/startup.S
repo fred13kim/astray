@@ -67,9 +67,14 @@ ZeroBss:
 
 .size   Reset_Handler, .-Reset_Handler
 
+/* ---------------------------------------- */
+    .section    .text.Default_Handler
 
+Default_Handler:
+Infinite_Loop:
+    b  Infinite_Loop
 
-
+.size  Default_Handler, .-Default_Handler
 
 
 /* ---------------------------------------- */
@@ -100,13 +105,32 @@ Vectors:
 
 .size   Vectors, .-Vectors
 
-.weak NMI_Handler
-.weak HardFault_Handler
-.weak MemManage_Handler
-.weak BusFault_Handler
-.weak UsageFault_Handler
-.weak SVC_Handler
-.weak DebugMon_Handler
-.weak PendSV_Handler
-.weak SysTick_Handler
-.weak _IRQ_Handler
+    .weak       NMI_Handler
+    .thumb_set  NMI_Handler, Default_Handler
+
+    .weak       HardFault_Handler
+    .thumb_set  HardFault_Handler, Default_Handler
+
+    .weak       MemManage_Handler
+    .thumb_set  MemManage_Handler, Default_Handler
+
+    .weak       BusFault_Handler
+    .thumb_set  BusFault_Handler, Default_Handler
+
+    .weak       UsageFault_Handler
+    .thumb_set  UsageFault_Handler, Default_Handler
+
+    .weak       SVC_Handler
+    .thumb_set  SVC_Handler, Default_Handler
+
+    .weak       DebugMon_Handler
+    .thumb_set  DebugMon_Handler, Default_Handler
+
+    .weak       PendSV_Handler
+    .thumb_set  PendSV_Handler, Default_Handler
+
+    .weak       SysTick_Handler
+    .thumb_set  SysTick_Handler, Default_Handler
+
+    .weak       _IRQ_Handler
+    .thumb_set  _IRQ_Handler, Default_Handler
