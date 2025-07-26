@@ -24,6 +24,8 @@ SystemInit:
     /* Not configuring system clock yet */
     bx      lr
 
+.size   SystemInit, .-SystemInit
+
 /* ---------------------------------------- */
 
     .section    .text.Reset_Handler
@@ -60,8 +62,8 @@ ZeroBss:
     strlo   r2, [r0], #4
     blo     ZeroBss
 
-    bl main
-    bx lr
+    bl      main
+    bx      lr
 
 .size   Reset_Handler, .-Reset_Handler
 
@@ -72,7 +74,7 @@ ZeroBss:
 
 /* ---------------------------------------- */
 
-    .section    .isr_vector
+    .section    .isr_vector, "a", %progbits
     .type       Vectors, %object
 
 /* Defined in B1.5.2 of ARMv7-M Ref */
@@ -80,18 +82,31 @@ ZeroBss:
 Vectors:
     .word   _mstack                 //x000
     .word   Reset_Handler           //x004
-    # .word   NMI_Handler             //x008
-    # .word   HardFault_Handler       //x00c
-    # .word   MemManage_Handler       //x010
-    # .word   BusFault_Handler        //x014
-    # .word   UsageFault_Handler      //x018
+    .word   NMI_Handler             //x008
+    .word   HardFault_Handler       //x00c
+    .word   MemManage_Handler       //x010
+    .word   BusFault_Handler        //x014
+    .word   UsageFault_Handler      //x018
     .word   0                       //x01c
     .word   0                       //x020
     .word   0                       //x024
     .word   0                       //x028
-    # .word   SVC_Handler             //x02c
-    # .word   DebugMon_Handler        //x030
+    .word   SVC_Handler             //x02c
+    .word   DebugMon_Handler        //x030
     .word   0                       //x034
-    # .word   PendSV_Handler          //x038
-    # .word   SysTick_Handler         //x03c
-    # .word   _IRQ_Handler           //x040
+    .word   PendSV_Handler          //x038
+    .word   SysTick_Handler         //x03c
+    .word   _IRQ_Handler            //x040
+
+.size   Vectors, .-Vectors
+
+.weak NMI_Handler
+.weak HardFault_Handler
+.weak MemManage_Handler
+.weak BusFault_Handler
+.weak UsageFault_Handler
+.weak SVC_Handler
+.weak DebugMon_Handler
+.weak PendSV_Handler
+.weak SysTick_Handler
+.weak _IRQ_Handler
