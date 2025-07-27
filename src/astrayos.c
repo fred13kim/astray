@@ -9,9 +9,13 @@ void SysTick_Handler(void)
 
 void ASTRAYOS_init(void)
 {
-	/* Initialize systick */
-	/* CTRL bits reset to 0 */
-	SYSTICK->LOAD = (SYS_CLK_FREQ / 10UL) - 1UL;
+	/**
+     * Initialize systick
+     */
 
-	SYSTICK->CTRL = (1UL << 2) | (1UL << 1) | (1UL << 0);
+	/* Load the reload value */
+	SYSTICK->RVR = ((SYS_CLK_FREQ / 10UL) - 1UL) & SYSTICK_RVR_RELOAD_MASK;
+
+	/* Enable systick timer with processor clk & pending interrupts enabled */
+	SYSTICK->CSR = SYSTICK_CSR_CLKSRC | SYSTICK_CSR_TICKINT | SYSTICK_CSR_EN;
 }
