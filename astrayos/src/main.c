@@ -1,7 +1,7 @@
 #include <task.h>
 
 char word[] = "word";
-int	 a, b, c, d;
+int  a, b, c, d;
 
 /**
  * Main application should "start" our RTOS
