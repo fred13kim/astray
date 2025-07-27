@@ -9,6 +9,10 @@ int  a, b, c, d;
 int main(void)
 {
 	ASTRAYOS_init();
-	create_task();
+
+	while (1) {
+		;
+		;
+	}
 	return 0;
 }
