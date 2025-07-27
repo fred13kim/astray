@@ -15,4 +15,3 @@
 #define SCB_BASE     (SCS_BASE + 0x0D00UL) /* System Control Block */
 
 #endif // !CORE_PERIPHS_H
-#define CORE_PERIPHS_H
