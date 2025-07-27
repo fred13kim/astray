@@ -1,4 +1,4 @@
 .direnv
 .git
-.gdbinit
+.gdb*
 build
