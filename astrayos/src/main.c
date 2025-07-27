@@ -1,4 +1,4 @@
-#include <task.h>
+#include <astrayos.h>
 
 char word[] = "word";
 int  a, b, c, d;
@@ -8,5 +8,7 @@ int  a, b, c, d;
  */
 int main(void)
 {
-	unsigned int i = 0;
+	ASTRAYOS_init();
+	create_task();
+	return 0;
 }

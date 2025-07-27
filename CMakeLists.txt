@@ -30,6 +30,7 @@ add_compile_options(
   -Wformat=2
   -Wformat-truncation
   -Wconversion
+  -Werror
   # Code Gen
   -fno-common
   # Optimization
@@ -43,7 +44,7 @@ add_compile_options(
 
 add_link_options(-T ${LINKER_SCRIPT} -Wl,-Map=astray.map -nostartfiles)
 
+add_subdirectory(astrayos)
 add_subdirectory(core)
 add_subdirectory(src)
 add_subdirectory(inc)
-add_subdirectory(astrayos)
