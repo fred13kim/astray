@@ -7,6 +7,8 @@
 
 #include <stdint.h>
 
+/* General Macros */
+
 #define __RW volatile
 #define __WO volatile
 #define __RO const volatile
@@ -25,9 +27,7 @@
 #define NVIC_BASE    (SCS_BASE + 0x0100UL) /* Nested Vector Interrupt Controller */
 #define SCB_BASE     (SCS_BASE + 0x0D00UL) /* System Control Block */
 
-/**
- * SYSTICK Register map
- */
+/* SYSTICK Register map */
 
 #define SYSTICK ((SYSTICK_T *)SYSTICK_BASE)
 
