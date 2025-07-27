@@ -11,6 +11,10 @@
 #define __WO volatile
 #define __RO const volatile
 
+/* Clock */
+#define HSI_CLK_FREQ 16000000
+#define SYS_CLK_FREQ HSI_CLK_FREQ
+
 /* Register map */
 
 #define ITM_BASE     (0xE0000000UL) /* Instruction Trace Macrocell */
