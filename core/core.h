@@ -30,6 +30,4 @@ typedef struct {
 	__RO uint32_t CALIB;
 } SYSTICK_T;
 
-int yeet();
-
 #endif // !CORE_PERIPHS_H
