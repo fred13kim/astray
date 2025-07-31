@@ -19,7 +19,7 @@ uint32_t ASTRAYOS_SYSTICK_init(uint32_t ticks)
 	/* SYSTICK should and is disabled by default */
 
 	/* Load the reload value */
-	SYSTICK->RVR = ((SYS_CLK_FREQ / 10UL) - 1UL);
+	SYSTICK->RVR = ((SYS_CLK_FREQ / 1000UL) - 1UL);
 
 	/* Clear the systick timer */
 	SYSTICK->CVR = 0UL;
@@ -34,4 +34,9 @@ void ASTRAYOS_init(void)
 {
 	/* Initialize systick period to 1 ms */
 	ASTRAYOS_SYSTICK_init(SYS_CLK_FREQ / 1000UL);
+
+	/*
+     * We could possibly use a separate timer for context switching but let's
+     * just use systick for now
+     */
 }
