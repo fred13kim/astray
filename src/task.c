@@ -1,6 +1,6 @@
 #include "task.h"
 
-int create_task(void)
+int init_task(void)
 {
 	return 0;
 }
