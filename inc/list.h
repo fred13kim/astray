@@ -13,7 +13,6 @@ static inline void ll_list_init(ll_node_t *head)
 	head->next = head;
 }
 
-
 static inline void ll_list_add(ll_node_t *head, ll_node_t *node)
 {
 	head->next->prev = node;
