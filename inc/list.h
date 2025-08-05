@@ -3,50 +3,39 @@
 
 #include <stddef.h>
 
+typedef struct ll_node_s {
+	struct ll_node_s *prev, *next;
+} ll_node_t;
 
-struct list_head {
-	struct list_head *next, *prev;
-};
-
-static inline void init_list_head(struct list_head *list)
+static inline void ll_list_init(ll_node_t *head)
 {
-	list->next = list;
-	list->prev = list;
+	head->prev = head;
+	head->next = head;
 }
 
-static inline void __list_add(struct list_head *new, struct list_head *prev,
-							  struct list_head *next)
+
+static inline void ll_list_add(ll_node_t *head, ll_node_t *node)
 {
-    next->prev = new;
-    new->next = next;
-    new->prev = prev;
-    prev->next = new;
+	head->next->prev = node;
+	node->next		 = head->next;
+	node->prev		 = head;
+	head->next		 = node;
 }
 
-static inline void list_add(struct list_head *new, struct list_head *head)
+static inline void ll_list_add_tail(ll_node_t *head, ll_node_t *node)
 {
-    __list_add(new, head, head->next);
+	head->prev		 = node;
+	node->next		 = head;
+	node->prev		 = head->prev;
+	head->prev->next = node;
 }
 
-static inline void list_add_tail(struct list_head *new, struct list_head *head)
+static inline void ll_list_del(ll_node_t *node)
 {
-    __list_add(new, head->prev, head);
-}
-
-static inline void __list_del(struct list_head *prev, struct list_head *next) {
-    next->prev = prev;
-    prev->next = next;
-}
-
-static inline void __list_del_entry(struct list_head *entry) {
-    // Should check if you can delete the entry?
-    __list_del(entry->prev, entry->next);
-}
-
-static inline void list_del(struct list_head *entry) {
-    __list_del_entry(entry);
-    entry->next = NULL;
-    entry->prev = NULL;
+	node->next->prev = node->prev;
+	node->prev->next = node->next;
+	node->next		 = NULL;
+	node->prev		 = NULL;
 }
 
 #endif // !LIST_H
