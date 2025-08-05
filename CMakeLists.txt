@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 project(astray C CXX ASM)
 
-file(GLOB LINKER_SCRIPT "ld/*.ld")
+file(GLOB LINKER_SCRIPT "astrayos/ld/*.ld")
 
 # Setup Toolchain
 set(CMAKE_SYSTEM_NAME Generic)
@@ -47,6 +47,4 @@ add_compile_options(
 add_link_options(-T ${LINKER_SCRIPT} -Wl,-Map=astray.map -nostartfiles)
 
 add_subdirectory(astrayos)
-add_subdirectory(core)
-add_subdirectory(src)
-add_subdirectory(inc)
+add_subdirectory(app)
