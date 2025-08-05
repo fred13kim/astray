@@ -1,7 +1,8 @@
 #include <task.h>
 #include <list.h>
 
-int init_task(void)
+void task_init(task_t *task, char *name, int priority)
 {
-	return 0;
+	task->name	   = name;
+	task->priority = priority;
 }
