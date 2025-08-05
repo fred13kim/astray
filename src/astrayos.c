@@ -1,5 +1,5 @@
-#include "astrayos.h"
-#include "core.h"
+#include <astrayos.h>
+#include <core.h>
 
 void SysTick_Handler(void)
 {

@@ -9,6 +9,7 @@ int	 a, b, c, d;
 int main(void)
 {
 	ASTRAYOS_init();
+	init_task();
 
 	while (1) {
 		;
