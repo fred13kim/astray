@@ -1,12 +1,6 @@
 #include <astrayos.h>
 #include <core.h>
 
-void SysTick_Handler(void)
-{
-	uint32_t val = SYSTICK->CVR;
-	(void)val;
-}
-
 uint32_t ASTRAYOS_SYSTICK_init(uint32_t ticks)
 {
 	if ((ticks - 1UL) > SYSTICK_RVR_RELOAD_MASK) {
