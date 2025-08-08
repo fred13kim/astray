@@ -16,11 +16,10 @@ int main(void)
 
 	task_t task_a;
 	task_init(&task_a, "Task A", 1);
+	ll_list_add(&tasks, &task_a.node);
 
 	task_t task_b;
 	task_init(&task_b, "Task B", 2);
-
-	ll_list_add(&tasks, &task_a.node);
 	ll_list_add(&tasks, &task_b.node);
 
 	while (1) {
