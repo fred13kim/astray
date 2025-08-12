@@ -24,7 +24,7 @@ uint32_t ASTRAYOS_SYSTICK_init(uint32_t ticks)
 	return 0;
 }
 
-void ASTRAYOS_init(void)
+void ASTRAYOS_start(void)
 {
 	/* Initialize systick period to 1 ms */
 	ASTRAYOS_SYSTICK_init(SYS_CLK_FREQ / 1000UL);
@@ -33,4 +33,12 @@ void ASTRAYOS_init(void)
      * We could possibly use a separate timer for context switching but let's
      * just use systick for now
      */
+
+	extern int main();
+	(void)main();
+
+	while (1) {
+		;
+		;
+	}
 }

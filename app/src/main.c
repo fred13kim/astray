@@ -1,4 +1,5 @@
 #include <astrayos.h>
+#include <stdbool.h>
 
 char word[] = "word";
 int	 a, b, c, d;
@@ -8,23 +9,17 @@ int	 a, b, c, d;
  */
 int main(void)
 {
-	ASTRAYOS_init();
-
-	ll_node_t tasks;
-	ll_list_init(&tasks);
-
-
 	task_t task_a;
 	task_init(&task_a, "Task A", 1);
-	ll_list_add(&tasks, &task_a.node);
 
 	task_t task_b;
 	task_init(&task_b, "Task B", 2);
-	ll_list_add(&tasks, &task_b.node);
 
-	while (1) {
-		;
-		;
+	sched_add_task(&task_a);
+	sched_add_task(&task_b);
+
+	while (true) {
 	}
+
 	return 0;
 }

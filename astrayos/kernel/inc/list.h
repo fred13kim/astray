@@ -5,12 +5,16 @@
 
 typedef struct ll_node_s {
 	struct ll_node_s *prev, *next;
+	void			 *container;
 } ll_node_t;
+
+typedef ll_node_t ll_list_t;
 
 static inline void ll_list_init(ll_node_t *head)
 {
-	head->prev = head;
-	head->next = head;
+	head->prev		= head;
+	head->next		= head;
+	head->container = NULL;
 }
 
 static inline void ll_list_add(ll_node_t *head, ll_node_t *node)

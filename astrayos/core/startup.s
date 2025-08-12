@@ -55,7 +55,7 @@ ZeroBss:
 
     bl      SysInit
 
-    bl      main
+    bl      ASTRAYOS_start
     bx      lr
 
 .size   Reset_Handler, .-Reset_Handler
